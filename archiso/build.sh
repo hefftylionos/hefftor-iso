@@ -2,11 +2,11 @@
 
 set -e -u
 
-iso_name=hefftorlinux
-iso_label="hefftorlinux-v2.1.1"
+iso_name=arcolinux-hefftor
+iso_label="arcolinux-hefftor-v20.1.4"
 iso_publisher="ArcoLinux <http://www.arcolinux.info>"
-iso_application="HefftorLinux Live/Rescue CD"
-iso_version="v2.1.1"
+iso_application="ArcoLinux Live/Rescue CD"
+iso_version="v20.1.4"
 install_dir=arch
 work_dir=work
 out_dir=out
