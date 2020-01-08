@@ -293,6 +293,7 @@ shopt -s cmdhist # save multi-line commands in history as single line
 shopt -s dotglob
 shopt -s histappend # do not overwrite history
 shopt -s expand_aliases # expand aliases
+shopt -s nocasematch
 
 # (cat ~/.cache/wal/sequences &)
 # export _JAVA_AWT_WM_NONREPARENTING=1
