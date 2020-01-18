@@ -188,7 +188,7 @@ alias ydep="deps y"
 alias add-repo="repo-add hefftor-repo.db.tar.gz *.pkg.tar.xz"
 
 #ps
-alias ps="ps auxf"
+alias psa="ps auxf"
 alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 #grub update
@@ -201,7 +201,7 @@ alias fixpng="find . -type f -name "*.png" -exec convert {} -strip {} \;"
 alias fc="sudo fc-cache -fv"
 
 #copy/paste all content of /etc/skel over to home folder - Beware
-alias skel='cp -rf /etc/skel/* ~'
+alias skel='cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S) && cp -rf /etc/skel/* ~'
 #backup contents of /etc/skel to hidden backup folder in home/user
 alias bupskel='cp -Rf /etc/skel ~/.skel-backup-$(date +%Y.%m.%d-%H.%M.%S)'
 
@@ -214,7 +214,12 @@ alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pac
 
 
 #copy bashrc-latest over on bashrc - cb= copy bashrc
-alias cb="cp ~/.bashrc-latest ~/.bashrc && source ~/.bashrc && sudo cp /etc/skel/.bashrc-latest /etc/skel/.bashrc"
+alias cb="sudo cp /etc/skel/.bashrc-latest /etc/skel/.bashrc && cp /etc/skel/.bashrc-latest ~/.bashrc && cp /etc/skel/.bashrc-latest ~/.bashrc-latest && source ~/.bashrc"
+alias ci="sudo cp /etc/skel/.inputrc-latest /etc/skel/.inputrc && cp /etc/skel/.inputrc-latest ~/.inputrc && cp /etc/skel/.inputrc-latest ~/.inputrc-latest"
+
+#switch between bash and zsh
+alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
 
 #quickly kill conkies
 alias kc='killall conky'
@@ -294,6 +299,12 @@ shopt -s dotglob
 shopt -s histappend # do not overwrite history
 shopt -s expand_aliases # expand aliases
 shopt -s nocasematch
+
+
+#create a file called .bashrc-personal and put all your personal aliases
+#in there. They will not be overwritten by skel.
+
+[[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
 # (cat ~/.cache/wal/sequences &)
 # export _JAVA_AWT_WM_NONREPARENTING=1
