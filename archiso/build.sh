@@ -3,10 +3,10 @@
 set -e -u
 
 iso_name=arcolinux-hefftor
-iso_label="arcolinux-hefftor-v20.2.16"
+iso_label="arcolinux-hefftor-v20.2.29"
 iso_publisher="ArcoLinux <http://www.arcolinux.info>"
 iso_application="ArcoLinux Live/Rescue CD"
-iso_version="v20.2.16"
+iso_version="v20.2.29"
 install_dir=arch
 work_dir=work
 out_dir=out
