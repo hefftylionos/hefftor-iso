@@ -1,6 +1,0 @@
-# Make Tab autocomplete regardless of filename case
-set completion-ignore-case on
-
-Home and End key to go to end of line and begin of line
-"\e[7~":beginning-of-line
-"\e[8~":end-of-line
