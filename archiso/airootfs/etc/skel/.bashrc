@@ -299,7 +299,7 @@ shopt -s cmdhist # save multi-line commands in history as single line
 shopt -s dotglob
 shopt -s histappend # do not overwrite history
 shopt -s expand_aliases # expand aliases
-shopt -s nocasematch
+# shopt -s nocasematch
 
 
 #create a file called .bashrc-personal and put all your personal aliases
