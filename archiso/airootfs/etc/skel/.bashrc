@@ -47,22 +47,7 @@ mkcd() {
                 mkdir -p $1 && cd $1
         fi
 }
-cdls() { 
-  cd "$@" && l; 
-}
 
-rd(){
-    pwd > "$HOME/.lastdir_$1"
-}
-
-crd(){
-        lastdir="$(cat "$HOME/.lastdir_$1")">/dev/null 2>&1
-        if [ -d "$lastdir" ]; then
-                cd "$lastdir"
-        else
-                echo "no existing directory stored in buffer $1">&2
-        fi
-}
 extract () {
    if [ -f $1 ] ; then
        case $1 in
@@ -98,10 +83,10 @@ gitclone() {
   if (( $# == 2 )); then
     if [[ "$1" -eq "gh" ]]
     then
-      git clone https://USER:PASS@github.com/USER/"$2".git
+      git clone https://USERNAME:PASSWDGH@github.com/USERNAME/"$2".git
     elif [[ "$1" -eq "gl" ]]
     then
-      git clone https://USER83:PASS@gitlab.com/USER83/"$2".git
+      git clone https://USERNAME83:PASSWDGL@gitlab.com/USERNAME83/"$2".git
     fi
   elif (( $# == 1 )); then
   fpath=$(echo "$1" | awk '{print $NF}' FS=/ | awk '{print $1}' FS=.)
@@ -111,21 +96,13 @@ gitclone() {
 gitremote() {
   if [[ "$1" -eq "gh" ]]
   then
-    git remote add origin https://USER:PASS@github.com/USER/"$2".git
+    git remote add origin https://USERNAME:PASSWDGH@github.com/USERNAME/"$2".git
   elif [[ "$1" -eq "gl" ]]
   then
-    git remote add origin https://USER83:PASS@gitlab.com/USER83/"$2".git
+    git remote add origin https://USERNAME83:PASSWDGL@gitlab.com/USERNAME83/"$2".git
   fi
 }
-dd() {
-  if [ $# -eq 2 ]; then
-    sudo dd status=progress if="$1" of="$2"
-  else
-    echo "Must take only 2 arguments"
-    echo "EXAMPLE:"
-    echo "dd /path/iso /dev/sd?"
-  fi
-}
+
 if [ -d "$HOME/.bin" ];
 then
   PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
@@ -286,7 +263,7 @@ alias nlightdm="sudo vim /etc/lightdm/lightdm.conf"
 alias npacman="sudo vim /etc/pacman.conf"
 alias ngrub="sudo vim /etc/default/grub"
 alias nmkinitcpio="sudo vim /etc/mkinitcpio.conf"
-alias noblogout="sudo vim /etc/oblogout.conf"
+alias nhefflogout="sudo vim /etc/oblogout.conf"
 
 #shutdown or reboot
 alias ssn="sudo shutdown now"
