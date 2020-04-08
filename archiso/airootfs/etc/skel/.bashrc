@@ -71,20 +71,20 @@ extract () {
  }
 
 deps() {
-  if [[ "$1" -eq "p" ]]
+  if [ "$1" == "p" ]
   then
     sudo pacman -Si "$2" |sed -n '/Depends\ On/,/:/p'|sed '$d'|cut -d: -f2
-  elif [[ "$1" -eq "y" ]]
+  elif [ "$1" == "y" ]
   then
     yay -Si "$2" |sed -n '/Depends\ On/,/:/p'|sed '$d'|cut -d: -f2
   fi  
 }
 gitclone() {
   if (( $# == 2 )); then
-    if [[ "$1" -eq "gh" ]]
+    if [ "$1" == "gh" ]
     then
       git clone https://USERNAME:PASSWDGH@github.com/USERNAME/"$2".git
-    elif [[ "$1" -eq "gl" ]]
+    elif [ "$1" == "gl" ]
     then
       git clone https://USERNAME83:PASSWDGL@gitlab.com/USERNAME83/"$2".git
     fi
@@ -94,13 +94,17 @@ gitclone() {
   fi
 }
 gitremote() {
-  if [[ "$1" -eq "gh" ]]
+  if [ "$1" == "gh" ]
   then
     git remote add origin https://USERNAME:PASSWDGH@github.com/USERNAME/"$2".git
-  elif [[ "$1" -eq "gl" ]]
+  elif [ "$1" == "gl" ]
   then
     git remote add origin https://USERNAME83:PASSWDGL@gitlab.com/USERNAME83/"$2".git
   fi
+}
+
+pkgsize() { 
+  expac -SsH M "%m: %n$\t%d" $@ | sort -h | tr '$' '\n'
 }
 
 if [ -d "$HOME/.bin" ];
@@ -215,7 +219,8 @@ alias grd="git rm -r"
 alias gra="gitremote"
 alias gcln="gitclone"
 
-alias serv="ssh brad@192.168.1.2"
+# alias serv="ssh USER@192.168.1.3"
+# alias servseed="ssh USER@joker.seedhost.eu"
 
 #hardware info --short
 alias hw="hwinfo --short"
