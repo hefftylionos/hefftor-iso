@@ -70,6 +70,18 @@ extract () {
    fi
  }
 
+pycomp () {
+  if (( $# == 2 )); then
+    gcc -v -Os -I /usr/include/python3.8 -L /usr/local/Frameworks/Python.framework/Versions/3.8/lib  -o "$1" "$2" -lpython3.8  -lpthread -lm -lutil -ldl
+  elif (( $# == 1 )); then
+    python3 "$1" build_ext --inplace
+  else
+    echo "Example"
+    echo "pycomp executable_name Root-file.py"
+    echo "pycomp compile.py"
+  fi
+}
+
 deps() {
   if [ "$1" == "p" ]
   then
