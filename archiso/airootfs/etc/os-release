@@ -1,7 +1,7 @@
-NAME="ArcoLinux-Hefftor"
+NAME="HefftorLinux"
 ID=hefftorlinux
 ID_LIKE="arch"
 VERSION_ID=v20.4.24
 ANSI_COLOR="0;36"
-HOME_URL="https://arcolinux.info"
-SUPPORT_URL="http://arcolinuxforum.com"
+HOME_URL="https://hefftor.xyz"
+SUPPORT_URL="http://hefftor.xyz"

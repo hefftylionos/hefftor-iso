@@ -22,14 +22,13 @@ function umaskFunc() {
     umask 022
 }
 
-#function localeGenFunc() {
-    # Set locales
-    #sed -i 's/^#\(en_US\.UTF-8\)/\1/' /etc/locale.gen
-    #export LANGUAGE=en_US.UTF-8
-    #export LANG=en_US.UTF-8
+function localeGenFunc() {
+    sed -i 's/^#\(en_US\.UTF-8\)/\1/' /etc/locale.gen
+    export LANGUAGE=en_US.UTF-8
+    export LANG=en_US.UTF-8
     #export LC_ALL=en_US.UTF-8
-    #locale-gen
-#}
+    locale-gen
+}
 
 function setTimeZoneAndClockFunc() {
     # Timezone
@@ -88,19 +87,18 @@ function enableServicesFunc() {
 	systemctl set-default graphical.target
 	systemctl enable NetworkManager.service
 	systemctl enable virtual-machine-check.service
-	#systemctl enable reflector.service
-	#systemctl enable reflector.timer
-  	systemctl enable org.cups.cupsd.service
-  	systemctl enable bluetooth.service
-  	systemctl enable ntpd.service
-  	#systemctl enable smb.service
-  	#systemctl enable nmb.service
-  	#systemctl enable winbind.service
-  	systemctl enable avahi-daemon.service
-  	systemctl enable avahi-daemon.socket
-  	#systemctl enable tlp.service
-  	#systemctl enable tlp-sleep.service
-  	#systemctl enable vnstat.service
+	systemctl enable update-mirrors.service
+  systemctl enable org.cups.cupsd.service
+  systemctl enable bluetooth.service
+  systemctl enable ntpd.service
+  #systemctl enable smb.service
+  #systemctl enable nmb.service
+  #systemctl enable winbind.service
+  systemctl enable avahi-daemon.service
+  systemctl enable avahi-daemon.socket
+  #systemctl enable tlp.service
+  #systemctl enable tlp-sleep.service
+  #systemctl enable vnstat.service
 }
 
 function fixWifiFunc() {
@@ -136,8 +134,8 @@ deleteXfceWallpapers
 layout deleteXfceWallpapers
 umaskFunc
 layout umaskFunc
-#localeGenFunc
-#layout localeGenFunc
+localeGenFunc
+layout localeGenFunc
 setTimeZoneAndClockFunc
 layout setTimeZoneAndClockFunc
 editOrCreateConfigFilesFunc
