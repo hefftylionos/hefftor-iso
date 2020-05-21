@@ -126,4 +126,4 @@ Include = /etc/pacman.d/hefftor-mirrorlist
 
 [hefftylionos]
 SigLevel = Optional TrustedOnly
-Include = /etc/pacman.d/hefftylionos-mirrorlist
+Server = https://$repo.github.io/repo/$arch
